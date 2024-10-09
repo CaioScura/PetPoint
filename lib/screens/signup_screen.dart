@@ -51,7 +51,7 @@ class SignupScreen extends StatelessWidget {
                         TextField(
                           decoration: InputDecoration(
                             labelText: 'Nome completo',
-                            border: OutlineInputBorder(),
+                            border: UnderlineInputBorder(), // Borda somente na parte inferior
                           ),
                         ),
                         SizedBox(height: 10),
@@ -60,7 +60,7 @@ class SignupScreen extends StatelessWidget {
                         TextField(
                           decoration: InputDecoration(
                             labelText: 'E-mail',
-                            border: OutlineInputBorder(),
+                            border: UnderlineInputBorder(), // Borda inferior
                           ),
                         ),
                         SizedBox(height: 10),
@@ -69,7 +69,7 @@ class SignupScreen extends StatelessWidget {
                         TextField(
                           decoration: InputDecoration(
                             labelText: 'Telefone',
-                            border: OutlineInputBorder(),
+                            border: UnderlineInputBorder(), // Borda inferior
                           ),
                         ),
                         SizedBox(height: 10),
@@ -78,7 +78,7 @@ class SignupScreen extends StatelessWidget {
                         TextField(
                           decoration: InputDecoration(
                             labelText: 'Endereço',
-                            border: OutlineInputBorder(),
+                            border: UnderlineInputBorder(), // Borda inferior
                           ),
                         ),
                         SizedBox(height: 10),
@@ -87,7 +87,7 @@ class SignupScreen extends StatelessWidget {
                         TextField(
                           decoration: InputDecoration(
                             labelText: 'Data de Nascimento',
-                            border: OutlineInputBorder(),
+                            border: UnderlineInputBorder(), // Borda inferior
                           ),
                         ),
                         SizedBox(height: 10),
@@ -96,7 +96,7 @@ class SignupScreen extends StatelessWidget {
                         TextField(
                           decoration: InputDecoration(
                             labelText: 'Senha',
-                            border: OutlineInputBorder(),
+                            border: UnderlineInputBorder(), // Borda inferior
                           ),
                           obscureText: true, // Ocultar senha
                         ),
