@@ -1,7 +1,9 @@
+// lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:petpoint/screens/login_screen.dart';
 import 'package:petpoint/screens/signup_screen.dart';
 import 'package:petpoint/screens/forgot_password_screen.dart';
+import 'package:petpoint/screens/tela_inicial.dart';
 import 'package:petpoint/utils/constants.dart';
 
 void main() {
@@ -16,14 +18,45 @@ class MyApp extends StatelessWidget {
       title: 'Flutter App',
       theme: ThemeData(
         primaryColor: primaryColor,
-        // accentColor: accentColor,
       ),
       initialRoute: '/',
       routes: {
         '/': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),
         '/forgot-password': (context) => ForgotPasswordScreen(),
+        '/home': (context) => TelaInicial(),
       },
     );
   }
 }
+
+
+// import 'package:flutter/material.dart';
+// import 'package:petpoint/screens/login_screen.dart';
+// import 'package:petpoint/screens/signup_screen.dart';
+// import 'package:petpoint/screens/forgot_password_screen.dart';
+// import 'package:petpoint/utils/constants.dart';
+//
+// void main() {
+//   runApp(MyApp());
+// }
+//
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Flutter App',
+//       theme: ThemeData(
+//         primaryColor: primaryColor,
+//         // accentColor: accentColor,
+//       ),
+//       initialRoute: '/',
+//       routes: {
+//         '/': (context) => LoginScreen(),
+//         '/signup': (context) => SignupScreen(),
+//         '/forgot-password': (context) => ForgotPasswordScreen(),
+//       },
+//     );
+//   }
+// }
