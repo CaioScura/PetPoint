@@ -5,6 +5,7 @@ import 'package:petpoint/screens/signup_screen.dart';
 import 'package:petpoint/screens/forgot_password_screen.dart';
 import 'package:petpoint/screens/tela_inicial.dart';
 import 'package:petpoint/utils/constants.dart';
+import 'package:petpoint/screens/cadastro_animal_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignupScreen(),
         '/forgot-password': (context) => ForgotPasswordScreen(),
         '/home': (context) => TelaInicial(),
+        '/cadastro-animal': (context) => CadastroAnimalScreen(),
       },
     );
   }
