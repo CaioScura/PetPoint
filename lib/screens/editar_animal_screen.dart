@@ -1,20 +1,16 @@
 // lib/screens/editar_animal_screen.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:petpoint/widgets/custom_button.dart';
 
 class EditarAnimalScreen extends StatelessWidget {
-  final Map<String, String> animal; // Dados do animal a serem editados
+  final Map<String, String> animalData;
 
-  EditarAnimalScreen({required this.animal});
+  EditarAnimalScreen({required this.animalData});
 
   @override
   Widget build(BuildContext context) {
-    // Controladores para os campos de texto, inicializando com os dados atuais do animal
-    final nomeController = TextEditingController(text: animal['nome']);
-    final descricaoController = TextEditingController(text: animal['descricao']);
-    final contatoController = TextEditingController(text: animal['contato']);
-    final regiaoController = TextEditingController(text: animal['regiao']);
-
     return Scaffold(
       backgroundColor: Color(0xFF43d7a1), // Cor de fundo verde
       body: Stack(
@@ -58,10 +54,10 @@ class EditarAnimalScreen extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        // Campo para adicionar ou modificar a foto
+                        // Campo para editar foto
                         GestureDetector(
                           onTap: () {
-                            // Ação para modificar a foto (pode usar ImagePicker)
+                            // Ação para adicionar foto (pode usar ImagePicker)
                           },
                           child: CircleAvatar(
                             radius: 50,
@@ -77,64 +73,98 @@ class EditarAnimalScreen extends StatelessWidget {
 
                         // Campo de Nome do animal
                         TextField(
-                          controller: nomeController,
                           decoration: InputDecoration(
                             labelText: 'Nome do Animal',
                             border: UnderlineInputBorder(), // Borda somente na parte inferior
                           ),
+                          controller: TextEditingController(text: animalData['nome']),
                         ),
                         SizedBox(height: 10),
 
                         // Campo de Descrição
                         TextField(
-                          controller: descricaoController,
                           decoration: InputDecoration(
                             labelText: 'Descrição',
                             border: UnderlineInputBorder(), // Borda inferior
                           ),
                           maxLines: 3, // Permitir múltiplas linhas
+                          controller: TextEditingController(text: animalData['descricao']),
                         ),
                         SizedBox(height: 10),
 
                         // Campo de Dados para Contato
                         TextField(
-                          controller: contatoController,
                           decoration: InputDecoration(
                             labelText: 'Dados para Contato',
                             border: UnderlineInputBorder(), // Borda inferior
                           ),
+                          controller: TextEditingController(text: animalData['contato']),
                         ),
                         SizedBox(height: 10),
 
-                        // Campo de Região
-                        TextField(
-                          controller: regiaoController,
-                          decoration: InputDecoration(
-                            labelText: 'Região',
-                            border: UnderlineInputBorder(), // Borda inferior
+                        // Mapa para a região
+                        Container(
+                          height: 200,
+                          child: FlutterMap(
+                            options: MapOptions(
+                              center: LatLng(0, 0), // Posição inicial
+                              zoom: 13.0,
+                            ),
+                            children: [
+                              TileLayer(
+                                urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                                subdomains: ['a', 'b', 'c'],
+                              ),
+                              // Adicione outras camadas aqui, como markers, se necessário
+                            ],
                           ),
                         ),
                         SizedBox(height: 20),
 
-                        // Botão de Salvar Alterações
-                        CustomButton(
-                          text: 'Salvar Alterações',
-                          onPressed: () {
-                            print('Salvando alterações do animal');
-                            // Implementar lógica para salvar as alterações
-                          },
-                          backgroundColor: Color(0xFF8461c8), // Cor do botão roxo
-                        ),
-                        SizedBox(height: 10),
-
-                        // Botão de Excluir Animal
-                        CustomButton(
-                          text: 'Excluir Animal',
-                          onPressed: () {
-                            print('Excluindo animal');
-                            // Implementar lógica para excluir o animal
-                          },
-                          backgroundColor: Colors.red, // Cor do botão vermelho
+                        // Botões de ação
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            CustomButton(
+                              text: 'Salvar',
+                              onPressed: () {
+                                // Lógica para salvar alterações
+                              },
+                              backgroundColor: Color(0xFF8461c8), // Cor do botão roxo
+                            ),
+                            CustomButton(
+                              text: 'Excluir',
+                              onPressed: () {
+                                // Lógica para excluir o animal
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('Excluir Animal'),
+                                      content: Text('Você tem certeza que deseja excluir este animal?'),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop(); // Fecha o diálogo
+                                          },
+                                          child: Text('Cancelar'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            // Lógica de exclusão
+                                            Navigator.of(context).pop(); // Fecha o diálogo
+                                            Navigator.of(context).pop(); // Fecha a tela de edição
+                                          },
+                                          child: Text('Excluir', style: TextStyle(color: Colors.red)),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              backgroundColor: Colors.red, // Cor do botão vermelho
+                            ),
+                          ],
                         ),
                       ],
                     ),

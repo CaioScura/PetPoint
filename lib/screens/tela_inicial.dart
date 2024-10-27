@@ -4,13 +4,13 @@ import 'package:petpoint/screens/editar_animal_screen.dart';
 
 class TelaInicial extends StatelessWidget {
   final List<Map<String, String>> animais = [
-    {'nome': 'Thor', 'localizacao': 'Central Park, avenida'},
-    {'nome': 'Simba', 'localizacao': 'Central Park, avenida'},
-    {'nome': 'Toddy', 'localizacao': 'Central Park, avenida'},
-    {'nome': 'Scooby', 'localizacao': 'Central Park, avenida'},
-    {'nome': 'Neve', 'localizacao': 'Central Park, avenida'},
-    {'nome': 'Conan', 'localizacao': 'Central Park, avenida'},
-    {'nome': 'Alf', 'localizacao': 'Central Park, avenida'},
+    {'nome': 'Thor', 'descricao': 'Grande e amigável', 'contato': '1234-5678', 'localizacao': 'Central Park, avenida'},
+    {'nome': 'Simba', 'descricao': 'Pequeno e peludo', 'contato': '8765-4321', 'localizacao': 'Central Park, avenida'},
+    {'nome': 'Toddy', 'descricao': 'Marrom e alegre', 'contato': '1234-5678', 'localizacao': 'Central Park, avenida'},
+    {'nome': 'Scooby', 'descricao': 'Grande e brincalhão', 'contato': '8765-4321', 'localizacao': 'Central Park, avenida'},
+    {'nome': 'Neve', 'descricao': 'Branco e fofinho', 'contato': '1234-5678', 'localizacao': 'Central Park, avenida'},
+    {'nome': 'Conan', 'descricao': 'Corajoso e forte', 'contato': '8765-4321', 'localizacao': 'Central Park, avenida'},
+    {'nome': 'Alf', 'descricao': 'Alienígena simpático', 'contato': '1234-5678', 'localizacao': 'Central Park, avenida'},
   ];
 
   @override
@@ -80,7 +80,7 @@ class TelaInicial extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditarAnimalScreen(animal: animais[index]),
+                          builder: (context) => EditarAnimalScreen(animalData: animais[index]),
                         ),
                       );
                     },
