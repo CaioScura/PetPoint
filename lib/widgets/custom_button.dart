@@ -1,14 +1,17 @@
+// lib/widgets/custom_button.dart
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final Color backgroundColor; // Novo parâmetro
+  final Color backgroundColor;
+  final double? fontSize; // Parâmetro opcional para o tamanho da fonte
 
   CustomButton({
     required this.text,
     required this.onPressed,
-    this.backgroundColor = Colors.blue, // Cor padrão para o botão
+    required this.backgroundColor,
+    this.fontSize, // Inicializa o parâmetro opcional
   });
 
   @override
@@ -16,13 +19,18 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: backgroundColor, // Aplicando a cor de fundo ao botão (usando backgroundColor agora)
-        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        backgroundColor: backgroundColor,
+        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
       ),
       child: Text(
         text,
-        style: TextStyle(fontSize: 18, color: Colors.white), // Texto branco por padrão
+        style: TextStyle(
+          fontSize: fontSize ?? 16, // Usa o tamanho especificado ou 16 por padrão
+          color: Colors.white,
+        ),
       ),
     );
   }

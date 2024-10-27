@@ -1,5 +1,7 @@
 // lib/screens/cadastro_animal_screen.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:petpoint/widgets/custom_button.dart';
 
 class CadastroAnimalScreen extends StatelessWidget {
@@ -93,22 +95,52 @@ class CadastroAnimalScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 10),
 
-                        // Campo de Região
-                        TextField(
-                          decoration: InputDecoration(
-                            labelText: 'Região',
-                            border: UnderlineInputBorder(), // Borda inferior
+                        // Mapa para a região
+                        Container(
+                          height: 200,
+                          child: FlutterMap(
+                            options: MapOptions(
+                              center: LatLng(0, 0), // Posição inicial
+                              zoom: 13.0,
+                            ),
+                            children: [
+                              TileLayer(
+                                urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                                subdomains: ['a', 'b', 'c'],
+                              ),
+                              // Adicione outras camadas aqui, como markers, se necessário
+                            ],
                           ),
                         ),
                         SizedBox(height: 20),
 
-                        // Botão de Cadastrar
-                        CustomButton(
-                          text: 'Cadastrar Animal',
-                          onPressed: () {
-                            print('Cadastrando animal');
-                          },
-                          backgroundColor: Color(0xFF8461c8), // Cor do botão roxo
+                        // Botões de ação
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SizedBox(
+                              width: 120, // Largura menor
+                              child: CustomButton(
+                                text: 'Cadastrar',
+                                onPressed: () {
+                                  print('Cadastrando animal');
+                                },
+                                backgroundColor: Color(0xFF8461c8), // Cor do botão roxo
+                                fontSize: 14, // Tamanho de fonte menor
+                              ),
+                            ),
+                            SizedBox(
+                              width: 120, // Largura menor
+                              child: CustomButton(
+                                text: 'Cancelar',
+                                onPressed: () {
+                                  Navigator.pop(context); // Volta para a tela anterior
+                                },
+                                backgroundColor: Colors.grey, // Cor do botão cinza
+                                fontSize: 14, // Tamanho de fonte menor
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
