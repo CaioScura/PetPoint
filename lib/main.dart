@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/forgot-password': (context) => ForgotPasswordScreen(),
         '/home': (context) => TelaInicial(),
         '/cadastro-animal': (context) => CadastroAnimalScreen(),
+
       },
     );
   }

@@ -1,5 +1,6 @@
 // lib/screens/tela_inicial.dart
 import 'package:flutter/material.dart';
+import 'package:petpoint/screens/editar_animal_screen.dart';
 
 class TelaInicial extends StatelessWidget {
   final List<Map<String, String>> animais = [
@@ -65,7 +66,7 @@ class TelaInicial extends StatelessWidget {
                   ),
                   child: ListTile(
                     leading: CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/pet_placeholder.png'), // Coloque a imagem do animal aqui
+                      backgroundImage: AssetImage('assets/images/pet_placeholder.png'),
                       radius: 30.0,
                     ),
                     title: Text(
@@ -73,7 +74,16 @@ class TelaInicial extends StatelessWidget {
                       style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(animais[index]['localizacao']!),
-                    trailing: Icon(Icons.pets, color: Color(0xFF43d7a1)), // Ícone de pata
+                    trailing: Icon(Icons.pets, color: Color(0xFF43d7a1)),
+                    onTap: () {
+                      // Navegar para a tela de edição do animal
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EditarAnimalScreen(animal: animais[index]),
+                        ),
+                      );
+                    },
                   ),
                 );
               },
