@@ -74,7 +74,7 @@ class TelaInicial extends StatelessWidget {
                       style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(animais[index]['localizacao']!),
-                    trailing: Icon(Icons.pets, color: Color(0xFF43d7a1)),
+                    trailing: Icon(Icons.pets, color: Color(0xFFD1B3FF)),
                     onTap: () {
                       // Navegar para a tela de edição do animal
                       Navigator.push(

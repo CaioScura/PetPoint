@@ -102,6 +102,15 @@ class SignupScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 20),
 
+                        TextField(
+                          decoration: InputDecoration(
+                            labelText: 'Confirmar Senha',
+                            border: UnderlineInputBorder(), // Borda inferior
+                          ),
+                          obscureText: true, // Ocultar senha
+                        ),
+                        SizedBox(height: 20),
+
                         // Botão de Cadastrar
                         CustomButton(
                           text: 'Cadastrar',

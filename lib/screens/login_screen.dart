@@ -88,14 +88,29 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pushNamed(context, '/signup');
                     },
-                    child: Text(
-                      'Não tem conta? Cadastre-se',
-                      style: TextStyle(
-                        color: Color(0xFF8461c8), // Cor do texto roxo especificado
-                        fontWeight: FontWeight.bold,
-                      ), // Negrito
+                    child: RichText(
+                      textAlign: TextAlign.center, // Centraliza o texto
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: 'Não tem conta?\n', // Primeira linha
+                            style: TextStyle(
+                              color: Color(0xFF8461c8), // Cor do texto roxo especificado
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'Cadastre-se', // Segunda linha
+                            style: TextStyle(
+                              color: Color(0xFF8461c8), // Cor do texto roxo especificado
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
+
                 ],
               ),
             ],

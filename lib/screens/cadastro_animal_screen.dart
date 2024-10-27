@@ -100,7 +100,7 @@ class CadastroAnimalScreen extends StatelessWidget {
                           height: 200,
                           child: FlutterMap(
                             options: MapOptions(
-                              center: LatLng(0, 0), // Posição inicial
+                              center: LatLng(-23.5886, -48.0533), // Posição inicial
                               zoom: 13.0,
                             ),
                             children: [
